@@ -242,9 +242,9 @@ navButtons[0].classList.add('activeButton')
 
 function Navigation(event)
 {
-    button = event.target
+    button = event.target.tagName.toLowerCase() === "button" && event.target
     activeButton = navButtons.find(elem => elem.classList.contains('activeButton'))
-    if (button != activeButton)
+    if (button != activeButton && event.target.tagName.toLowerCase() === "button" )
     {
         activeButton.classList.remove('activeButton')
         button.classList.add('activeButton')

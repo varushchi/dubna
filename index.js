@@ -242,16 +242,20 @@ navButtons[0].classList.add('activeButton')
 
 function Navigation(event)
 {
-    button = event.target.tagName.toLowerCase() === "button" && event.target
-    activeButton = navButtons.find(elem => elem.classList.contains('activeButton'))
-    if (button != activeButton && event.target.tagName.toLowerCase() === "button" )
+    if (event.target.tagName.toLowerCase() === "button")
     {
-        activeButton.classList.remove('activeButton')
-        button.classList.add('activeButton')
-        if (button.classList.contains('activity-button')) main.innerHTML = activitySection
-        else if (button.classList.contains('map-button')) main.innerHTML = mapSection
-        else if (button.classList.contains('time-button')) main.innerHTML = timeSection
+        button = event.target
+        activeButton = navButtons.find(elem => elem.classList.contains('activeButton'))
+        if (button != activeButton)
+        {
+            activeButton.classList.remove('activeButton')
+            button.classList.add('activeButton')
+            if (button.classList.contains('activity-button')) main.innerHTML = activitySection
+            else if (button.classList.contains('map-button')) main.innerHTML = mapSection
+            else if (button.classList.contains('time-button')) main.innerHTML = timeSection
+        }
     }
+    
 
 }
 navButtons[0].addEventListener('click', Navigation)

@@ -64,6 +64,7 @@ let activitySection = `
             </div>
         </section>
         <section class="right-section">
+            <button class='hide-right-section'><</button>
             <div class="user-div">
                 <img src="./img/user.jfif"/>
                 <span class="name">Hanna Dorman</span>
@@ -236,7 +237,6 @@ let main = document.getElementById('root')
 main.innerHTML = activitySection
 
 let navButtons = [document.querySelector('.activity-button'), document.querySelector('.map-button'), document.querySelector('.time-button')]
-console.log(navButtons)
 
 navButtons[0].classList.add('activeButton')
 
@@ -258,6 +258,19 @@ function Navigation(event)
     
 
 }
+
+function Hide() 
+{
+    rightSection = document.querySelectorAll('.right-section')[2]
+    console.log(rightSection.hidden)
+    rightSection.hidden = true
+}
+
+hideButton = document.querySelector('.hide-right-section')
+
+hideButton.addEventListener('click', Hide)
+
+
 navButtons[0].addEventListener('click', Navigation)
 navButtons[1].addEventListener('click', Navigation)
 navButtons[2].addEventListener('click', Navigation)

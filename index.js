@@ -64,6 +64,7 @@ let activitySection = `
             </div>
         </section>
         <section class="right-section">
+            <button class='hide-right-section'><</button>
             <div class="user-div">
                 <img src="./img/user.jfif"/>
                 <span class="name">Hanna Dorman</span>
@@ -227,7 +228,7 @@ let timeSection = `
             </div>
         </div>
         <div class = 'time-div'>
-            00:00:05
+            0
         </div>
     </main>
 `
@@ -236,7 +237,6 @@ let main = document.getElementById('root')
 main.innerHTML = activitySection
 
 let navButtons = [document.querySelector('.activity-button'), document.querySelector('.map-button'), document.querySelector('.time-button')]
-console.log(navButtons)
 
 navButtons[0].classList.add('activeButton')
 
@@ -252,15 +252,39 @@ function Navigation(event)
             button.classList.add('activeButton')
             if (button.classList.contains('activity-button')) main.innerHTML = activitySection
             else if (button.classList.contains('map-button')) main.innerHTML = mapSection
-            else if (button.classList.contains('time-button')) main.innerHTML = timeSection
+            else if (button.classList.contains('time-button')) 
+                {
+                    main.innerHTML = timeSection
+                    timer = document.querySelector('.time-div')
+                    startTime = 0
+                    setInterval(()=>{
+                        startTime+=1
+                        timer.innerHTML = startTime
+                    }, 1000)
+                }
         }
     }
     
 
 }
+
 navButtons[0].addEventListener('click', Navigation)
 navButtons[1].addEventListener('click', Navigation)
 navButtons[2].addEventListener('click', Navigation)
+
+
+function Hide() 
+{
+    rightSection = document.querySelectorAll('.right-section')[2]
+    console.log(rightSection.hidden)
+    rightSection.hidden = true
+}
+hideButton = document.querySelector('.hide-right-section')
+hideButton.addEventListener('click', Hide)
+
+
+
+
 
 
 

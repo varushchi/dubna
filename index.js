@@ -228,7 +228,7 @@ let timeSection = `
             </div>
         </div>
         <div class = 'time-div'>
-            00:00:05
+            0
         </div>
     </main>
 `
@@ -252,12 +252,26 @@ function Navigation(event)
             button.classList.add('activeButton')
             if (button.classList.contains('activity-button')) main.innerHTML = activitySection
             else if (button.classList.contains('map-button')) main.innerHTML = mapSection
-            else if (button.classList.contains('time-button')) main.innerHTML = timeSection
+            else if (button.classList.contains('time-button')) 
+                {
+                    main.innerHTML = timeSection
+                    timer = document.querySelector('.time-div')
+                    startTime = 0
+                    setInterval(()=>{
+                        startTime+=1
+                        timer.innerHTML = startTime
+                    }, 1000)
+                }
         }
     }
     
 
 }
+
+navButtons[0].addEventListener('click', Navigation)
+navButtons[1].addEventListener('click', Navigation)
+navButtons[2].addEventListener('click', Navigation)
+
 
 function Hide() 
 {
@@ -265,15 +279,12 @@ function Hide()
     console.log(rightSection.hidden)
     rightSection.hidden = true
 }
-
 hideButton = document.querySelector('.hide-right-section')
-
 hideButton.addEventListener('click', Hide)
 
 
-navButtons[0].addEventListener('click', Navigation)
-navButtons[1].addEventListener('click', Navigation)
-navButtons[2].addEventListener('click', Navigation)
+
+
 
 
 
